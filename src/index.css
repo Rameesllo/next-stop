@@ -1,0 +1,28 @@
+/* Core RouteSync Styles */
+@import './assets/variables.css';
+@import './assets/base.css';
+@import './assets/components.css';
+@import './assets/pages.css';
+
+/* React-specific overrides if needed */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#app-content {
+  flex: 1;
+}
+
+/* Ensure Leaflet map is visible */
+#track-map {
+  width: 100%;
+  height: 400px;
+}

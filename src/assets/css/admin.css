@@ -1,0 +1,269 @@
+/* 
+ * RouteSync Admin Styles 
+ * Isolated styling specifically for admin.html to avoid bloating the main app CSS.
+ */
+
+/* Admin specific overrides or additions not present in base/components */
+
+.admin-tab-content {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Make tables look clean and padded */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    padding: 12px 16px;
+    vertical-align: middle;
+}
+
+/* Ensure consistent text colors in tables */
+td {
+    color: var(--color-gray-700);
+}
+
+/* Keep the year-tabs aesthetics for admin tabs but ensure they scroll right */
+.year-tabs-container {
+    display: flex;
+    gap: var(--space-3);
+    overflow-x: auto;
+    padding-bottom: var(--space-2);
+    /* Hide scrollbar for clean look */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.year-tabs-container::-webkit-scrollbar {
+    display: none;
+}
+
+.year-tab {
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-white);
+    color: var(--color-gray-600);
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    border: 1px solid var(--color-gray-200);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.year-tab.active {
+    background-color: var(--color-deep-teal);
+    color: var(--color-white);
+    border-color: var(--color-deep-teal);
+    box-shadow: var(--shadow-sm);
+}
+
+/* --- Modals for CRUD operations --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    padding: var(--space-4);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background-color: var(--color-white);
+    border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 400px;
+    padding: var(--space-6);
+    transform: translateY(20px);
+    transition: transform 0.2s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-4);
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--color-deep-teal);
+}
+
+.btn-close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-gray-500);
+    cursor: pointer;
+}
+
+.modal-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+}
+
+/* --- Finance Ledger Badges --- */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    border-radius: var(--radius-full);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.badge-pending {
+    background-color: #FEF2F2;
+    color: #DC2626;
+    border: 1px solid #FECACA;
+}
+
+.badge-success {
+    background-color: #ECFDF5;
+    color: #059669;
+    border: 1px solid #A7F3D0;
+}
+
+.badge-active {
+    background-color: #F0FDF4;
+    color: var(--color-teal);
+    border: 1px solid #BBF7D0;
+}
+
+/* --- Custom Searchable Select --- */
+.custom-dropdown-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    z-index: 1001;
+    max-height: 250px;
+    overflow-y: auto;
+    margin-top: 4px;
+}
+
+.dropdown-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid var(--color-gray-50);
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background-color: var(--color-gray-50);
+}
+
+.dropdown-item .item-title {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--color-gray-900);
+    margin-bottom: 2px;
+}
+
+.dropdown-item .item-subtitle {
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+}
+
+/* --- Transaction History Grouping --- */
+.transaction-group-header {
+    background-color: var(--color-gray-50);
+    border-bottom: 2px solid var(--color-gray-100);
+}
+
+.transaction-group-header td {
+    padding: 10px 16px;
+    font-weight: 700;
+    color: var(--color-deep-teal);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.btn-student-history {
+    padding: 0;
+    border: none;
+    background: none;
+    text-align: left;
+    width: auto;
+    color: var(--color-deep-teal);
+    font-weight: 700;
+    cursor: pointer;
+    display: block;
+    transition: color 0.2s ease;
+}
+
+.btn-student-history:hover {
+    color: var(--color-teal);
+    text-decoration: underline;
+}
+
+/* Ensure searchable select dropdown is always on top */
+.custom-dropdown-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    z-index: 2000;
+    /* Higher than modal headers */
+    max-height: 250px;
+    overflow-y: auto;
+    margin-top: 4px;
+}
+
+/* Hide native arrows or styling that might conflict if needed */
+.no-icon {
+    padding-left: var(--space-4) !important;
+}
